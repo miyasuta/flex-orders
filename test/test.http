@@ -1,0 +1,16 @@
+###
+POST http://localhost:4004/order/Orders
+Content-Type: application/json
+
+{
+    "customer_ID": 1
+}
+
+###
+@id=df06430c-d2e9-4afb-809a-db4b16e0b7f1
+POST http://localhost:4004/order/Orders({{id}})/to_Items
+Content-Type: application/json
+
+{
+    "product_ID": 1
+}
