@@ -46,5 +46,15 @@ annotate OrderService.Items with @(
             { $Type : 'UI.DataField', Value : itemNumber, },
             { $Type : 'UI.DataField', Value : product_ID, },
         ],
+        Identification  : [
+            { $Type : 'UI.DataField', Value : itemNumber, },
+            { $Type : 'UI.DataField', Value : product_ID, },
+        ],
+        Facets  : [
+            {
+                $Type : 'UI.ReferenceFacet',
+                Target : '@UI.Identification',
+            },
+        ],
     }
 );

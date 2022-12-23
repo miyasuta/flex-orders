@@ -7,13 +7,16 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.16",
     "express": "^4"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.102.14",
     "sqlite3": "^5.0.4"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch-order-entry": "cds watch --open order-entry/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "engines": {
     "node": "^16.15"
@@ -42,5 +45,8 @@
       "no-console": "off",
       "require-atomic-updates": "off"
     }
-  }
+  },
+  "sapux": [
+    "app/order-entry"
+  ]
 }
