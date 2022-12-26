@@ -48,5 +48,19 @@ annotate OrderService.Items with @(
             { $Type : 'UI.DataField', Value : product_ID, },
             { $Type : 'UI.DataField', Value : quantity, },
         ],
+        FieldGroup #main : {
+            $Type : 'UI.FieldGroupType',
+            Data : [
+                { $Type : 'UI.DataField', Value : product_ID, },
+                { $Type : 'UI.DataField', Value : quantity, },                
+            ],
+            
+        },
+        Facets  : [
+            {
+                $Type : 'UI.ReferenceFacet',
+                Target : '@UI.FieldGroup#main',
+            },
+        ],
     }
 );
