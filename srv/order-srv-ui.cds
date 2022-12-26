@@ -22,6 +22,7 @@ annotate OrderService.Orders with @(
             $Type : 'UI.FieldGroupType',
             Data : [
                 { $Type : 'UI.DataField', Value : customer_ID, },
+                { $Type : 'UI.DataField', Value : description, },
             ],
         },
         Facets  : [
@@ -45,6 +46,21 @@ annotate OrderService.Items with @(
         LineItem  : [
             { $Type : 'UI.DataField', Value : itemNumber, },
             { $Type : 'UI.DataField', Value : product_ID, },
+            { $Type : 'UI.DataField', Value : quantity, },
+        ],
+        FieldGroup #main : {
+            $Type : 'UI.FieldGroupType',
+            Data : [
+                { $Type : 'UI.DataField', Value : product_ID, },
+                { $Type : 'UI.DataField', Value : quantity, },                
+            ],
+            
+        },
+        Facets  : [
+            {
+                $Type : 'UI.ReferenceFacet',
+                Target : '@UI.FieldGroup#main',
+            },
         ],
         Identification  : [
             { $Type : 'UI.DataField', Value : itemNumber, },
