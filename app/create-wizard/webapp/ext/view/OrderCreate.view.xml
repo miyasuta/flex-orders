@@ -1,0 +1,36 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:macros="sap.fe.macros" xmlns:form="sap.ui.layout.form" id="review" controllerName="flex.createwizard.ext.view.OrderCreate" xmlns="sap.m">
+    <NavContainer id="wizardNavContainer">
+        <pages>
+            <Page id="createOrderPage" title="Guided Order Creation">
+                <content>
+                    <Wizard id="CreateOrderWizard" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="reviewOrder">
+                        <WizardStep id="stepCustomer" title="Customer" validated="true">
+                            <VBox width="800px">      
+                                <Text text="Select the customer." />
+                                <macros:Field metaPath="customer_ID" id="customer" />
+                            </VBox>
+                        </WizardStep>
+                        <WizardStep id="stepItems" validated="true" title="Items">
+                            <macros:Table metaPath="to_Items/@com.sap.vocabularies.UI.v1.LineItem" id="items" busy="{ui>/isBusy}" />
+                        </WizardStep>
+                    </Wizard>
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <Button id="cancelButton" text="Cancel" press="cancelDocument" />
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+            <Page id="reviewPage" title="Review New Order">
+                <content>
+                    <macros:Form readOnly="true" metaPath="@com.sap.vocabularies.UI.v1.FieldGroup#main" id="reviewGeneral" />
+                    <macros:Table readOnly="true" enableExport="false" isSearchable="false" personalization="false"
+                        metaPath="to_Items/@com.sap.vocabularies.UI.v1.LineItem" id="itemsDisplay"  />
+                    <MessageStrip class="sapUiSmallMarginBottom" type="Warning" text="By clicking on Create New Order you accept you read and accept our internal order guidelines." showIcon="true" />
+                    <Button text="Create New Order" press="createOrder" type="Emphasized" />
+                </content>     
+            </Page>
+        </pages>
+    </NavContainer>
+</mvc:View>

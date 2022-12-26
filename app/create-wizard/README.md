@@ -1,7 +1,7 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Mon Dec 26 2022 20:32:31 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Mon Dec 26 2022 20:47:59 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.8.3|
 |**Generation Platform**<br>SAP Business Application Studio|
@@ -9,7 +9,7 @@
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/order/
 |**Module Name**<br>create-wizard|
-|**Application Title**<br>Create Order|
+|**Application Title**<br>Manage Orders|
 |**Namespace**<br>flex|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.109.3|

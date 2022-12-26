@@ -287,6 +287,27 @@
                                                 </Record>
                                             </Collection>
                                         </Annotation>
+                                        <Annotation Term="UI.FieldGroup" Qualifier="main">
+                                            <Record Type="UI.FieldGroupType">
+                                                <PropertyValue Property="Data">
+                                                    <Collection>
+                                                        <Record Type="UI.DataField">
+                                                            <PropertyValue Property="Value" Path="product_ID"/>
+                                                        </Record>
+                                                        <Record Type="UI.DataField">
+                                                            <PropertyValue Property="Value" Path="quantity"/>
+                                                        </Record>
+                                                    </Collection>
+                                                </PropertyValue>
+                                            </Record>
+                                        </Annotation>
+                                        <Annotation Term="UI.Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#main"/>
+                                                </Record>
+                                            </Collection>
+                                        </Annotation>
                                     </Annotations>
                                     <Annotations Target="OrderService.EntityContainer/Items">
                                         <Annotation Term="Common.DraftNode">
