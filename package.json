@@ -48,6 +48,7 @@
   },
   "sapux": [
     "app/form-entry",
+    "app/create-wizard",
     "app/create-wizard"
   ]
 }

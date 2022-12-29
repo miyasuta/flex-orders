@@ -102,6 +102,11 @@
         },
         {
           "pattern": "Orders({key}):?query:",
+          "name": "CreateWizard",
+          "target": "CreateWizard"
+        },
+        {
+          "pattern": "OrderDetail({key}):?query:",
           "name": "OrdersObjectPage",
           "target": "OrdersObjectPage"
         },
@@ -130,10 +135,22 @@
             }
           }
         },
+        "CreateWizard": {
+            "type": "Component",
+            "id": "entryPage",
+            "name": "sap.fe.core.fpm",
+            "options": {
+                "settings": {
+                    "viewName": "flex.createwizard.ext.view.OrderCreate",
+                    "entitySet": "Orders"
+                }
+            }
+        },
         "OrdersObjectPage": {
           "type": "Component",
           "id": "OrdersObjectPage",
           "name": "sap.fe.templates.ObjectPage",
+          "contextPattern": "/Orders({key})",
           "options": {
             "settings": {
               "editableHeaderContent": false,
@@ -160,6 +177,15 @@
           }
         }
       }
+    },
+    "extends": {
+        "extensions": {
+            "sap.ui.controllerExtensions": {
+                "sap.fe.templates.ListReport.ListReportController": {
+                    "controllerName": "flex.createwizard.ext.controller.OrdersList"
+                }
+            }
+        }
     }
   },
   "sap.fiori": {
