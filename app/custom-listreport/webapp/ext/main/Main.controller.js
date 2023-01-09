@@ -7,7 +7,21 @@ sap.ui.define(
 
         return PageController.extend('flex.customlistreport.ext.main.Main', {
             onCreate: function() {
-                this.routing.navigateToRoute('Create');
+                const listBinding = this.getView().getModel().bindList("/Orders");
+                this.editFlow.createDocument(listBinding, {
+                    creationMode: "External",
+                    outbound: "create-wizard"
+                })               
+            },
+
+            handlers: {
+                onChevronPressNavigateOutBound: function(oController, outbound, undefined, sCreatePath) {
+                    oController.intentBasedNavigation.navigateOutbound(outbound);
+                },
+                // onPressed: function (oEvent) {
+                //     var oContext = oEvent.getSource().getBindingContext();
+                //     this.routing.navigate(oContext);
+                // }
             }
         });
     }

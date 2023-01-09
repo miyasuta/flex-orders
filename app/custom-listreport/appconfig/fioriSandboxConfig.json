@@ -1,0 +1,9 @@
+{
+  "applications": {
+    "Order-create": {
+      "additionalInformation": "SAPUI5.Component=flex.customwizard",
+      "applicationType": "URL",
+      "url": "../resources/flex.customwizard"
+    }
+  }
+}

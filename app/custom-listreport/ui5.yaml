@@ -2,3 +2,13 @@ specVersion: "2.5"
 metadata:
   name: flex.customlistreport
 type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-servestatic
+      afterMiddleware: compression
+      configuration:
+        paths:
+          - path: /resources/flex.customwizard
+            src: ../custom-wizard/webapp
+          - path: /appconfig
+            src: appconfig

@@ -34,6 +34,28 @@
           "localUri": "annotations/annotation.xml"
         }
       }
+    },
+    "crossNavigation": {
+        "inbounds": {
+          "flex-createwizard-inbound": {
+            "signature": {
+                "parameters": {},
+                "additionalParameters": "allowed"
+            },
+            "semanticObject": "Order",
+            "action": "createwizard",
+            "title": "{{flpTitle}}",
+            "subTitle": "{{flpSubtitle}}",
+            "icon": ""
+        }          
+        },
+        "outbounds": {
+            "create-wizard": {
+                "semanticObject": "Order",
+                "action": "create",
+                "additionalParameters": "allowed"
+            }
+        }
     }
   },
   "sap.ui": {

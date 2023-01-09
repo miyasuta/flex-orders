@@ -1,0 +1,139 @@
+_schema-version: "3.1"
+ID: flex-orders
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: flex-orders-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: flex-orders-db
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    disk-quota: 1024M
+    memory: 256M
+  build-parameters:
+    builder: npm-ci
+- name: flex-orders-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: flex-orders-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: flex-orders-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: flex-orders-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - flexcustomlistreport.zip
+      name: flexcustomlistreport
+      target-path: resources/
+    - artifacts:
+      - flexcustomformentry.zip
+      name: flexcustomformentry
+      target-path: resources/
+- name: flexcustomlistreport
+  type: html5
+  path: app/custom-listreport
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: flexcustomformentry
+  type: html5
+  path: app/custom-form-entry
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: flex-orders_destination-content
+  type: com.sap.application.content
+  requires:
+  - name: flex-orders_uaa
+    parameters:
+      service-key:
+        name: flex-orders_uaa-key
+  - name: flex-orders-repo-host
+    parameters:
+      service-key:
+        name: flex-orders-repo-host-key
+  - name: flex-orders-destination-service
+    parameters:
+      content-target: true
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: flex-orders-html5-srv
+          ServiceInstanceName: flex-orders-html5-srv
+          ServiceKeyName: flex-orders-html5-srv-key
+          sap.cloud.service: flexorders.service
+        - Authentication: OAuth2UserTokenExchange
+          Name: flex-orders_uaa
+          ServiceInstanceName: flex-orders_uaa
+          ServiceKeyName: flex-orders_uaa-key
+          sap.cloud.service: flexorders.service
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+resources:
+- name: flex-orders-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: flex-orders-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: flex-orders-html5-srv
+    service-plan: app-host
+- name: flex-orders-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: flex-orders-destination-service
+    service-plan: lite
+- name: flex-orders_uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npx -p @sap/cds-dk cds build --production

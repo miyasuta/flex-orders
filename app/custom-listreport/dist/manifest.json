@@ -1,0 +1,183 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "flex.customlistreport",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:fpm",
+            "version": "1.8.3",
+            "toolsId": "5b753514-2dba-42a5-890a-3908b5252e15"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "order/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "flex-customlistreport-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "Order",
+                    "action": "customlistreport",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            },
+            "outbounds": {
+                "create-wizard": {
+                    "semanticObject": "Order",
+                    "action": "createWithWizard",
+                    "additionalParameters": "allowed"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.109.3",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "flex.customlistreport.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "routes": [
+                {
+                    "name": "OrdersMain",
+                    "pattern": ":?query:",
+                    "target": "OrdersMain"
+                },
+                {
+                    "name": "Create",
+                    "pattern": "Orders3({key}):?query:",
+                    "target": "Create"
+                },
+                {
+                    "pattern": "Orders2({key}):?query:",
+                    "name": "OrdersObjectPage",
+                    "target": "OrdersObjectPage"
+                }
+            ],
+            "targets": {
+                "OrdersMain": {
+                    "type": "Component",
+                    "id": "OrdersMain",
+                    "name": "sap.fe.core.fpm",
+                    "options": {
+                        "settings": {
+                            "viewName": "flex.customlistreport.ext.main.Main",
+                            "entitySet": "Orders"
+                        }
+                    }
+                },
+                "Create": {
+                    "type": "Component",
+                    "id": "entryPage",
+                    "name": "sap.fe.core.fpm",
+                    "options": {
+                        "settings": {
+                            "viewName": "flex.customlistreport.ext.create.Create",
+                            "entitySet": "Orders"
+                        }
+                    }
+                },
+                "OrdersObjectPage": {
+                    "type": "Component",
+                    "id": "OrdersObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "contextPattern": "/Orders({key})",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Orders",
+                            "navigation": {
+                                "to_Items": {
+                                    "detail": {
+                                        "route": "ItemsObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "service": "flexorders.service"
+    }
+}

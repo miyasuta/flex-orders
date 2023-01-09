@@ -1,5 +1,9 @@
 using {OrderService} from './order-srv';
 
+// annotate OrderService.Orders with @(
+//     Capabilities.Insertable: false
+// );
+
 annotate OrderService.Orders with @(
     Common.SemanticKey : [orderId],
     UI                 : {
@@ -8,6 +12,14 @@ annotate OrderService.Orders with @(
             { $Type : 'UI.DataField', Value : orderId, },
             { $Type : 'UI.DataField', Value : customer_ID, },
             { $Type : 'UI.DataField', Value : createdAt, },
+            { $Type : 'UI.DataField', Value : createdBy, },
+            {
+                $Type : 'UI.DataFieldForIntentBasedNavigation',
+                SemanticObject : 'Order',
+                Action : 'createWithWizard',
+                Label : 'Create wizard',
+                RequiresContext: false
+            }
         ],
         HeaderInfo  : {
             $Type : 'UI.HeaderInfoType',
