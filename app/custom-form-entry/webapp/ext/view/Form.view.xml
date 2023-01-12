@@ -1,0 +1,23 @@
+<mvc:View xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:macros="sap.fe.macros"
+    xmlns:html="http://www.w3.org/1999/xhtml" controllerName="flex.customformentry.ext.view.Form">
+    <Page id="Form" title="Form">
+        <content>
+            <Panel headerText="Order information" >
+		        <macros:Form metaPath="@com.sap.vocabularies.UI.v1.FieldGroup#main" id="main"/>
+	        </Panel>
+            <!-- <Panel headerText="Order items" >
+		        <macros:Table metaPath="to_Items/@com.sap.vocabularies.UI.v1.LineItem" id="items" />
+	        </Panel>                -->
+        </content>
+        <!-- <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button text="Create New Order" press="saveDocument" type="Emphasized"
+                    visible="{viewModel>/editable}" />  
+                <Button id="cancelButton" text="Cancel" press="cancelDocument" 
+                    visible="{viewModel>/editable}"/>  
+            </OverflowToolbar>    
+        </footer> -->
+    </Page>
+</mvc:View>

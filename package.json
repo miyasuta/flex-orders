@@ -10,10 +10,13 @@
     "express": "^4"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.102.14",
     "sqlite3": "^5.0.4"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch-custom-form-entry": "cds watch --open custom-form-entry/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-custom-form-entry2": "cds watch --open custom-form-entry2/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "engines": {
     "node": "^16.15"
@@ -42,5 +45,9 @@
       "no-console": "off",
       "require-atomic-updates": "off"
     }
-  }
+  },
+  "sapux": [
+    "app/custom-form-entry",
+    "app/custom-form-entry2"
+  ]
 }
