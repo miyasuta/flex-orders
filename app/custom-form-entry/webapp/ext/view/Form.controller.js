@@ -9,6 +9,7 @@ sap.ui.define(
 
         return PageController.extend('flex.customformentry.ext.view.Form', {
             onInit: function() {
+                PageController.prototype.onInit.apply(this);
                 let model = {
                     editable : true
                 };
@@ -29,6 +30,7 @@ sap.ui.define(
                     control: this.byId("cancelButton")
                 }).then(function(){
                     that.getView().getModel("viewModel").setProperty("/editable", false);
+                    
                 })
             }
         });

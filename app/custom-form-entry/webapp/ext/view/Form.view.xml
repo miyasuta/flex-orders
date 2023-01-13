@@ -6,18 +6,20 @@
             <Panel headerText="Order information" >
 		        <macros:Form metaPath="@com.sap.vocabularies.UI.v1.FieldGroup#main" id="main"/>
 	        </Panel>
-            <!-- <Panel headerText="Order items" >
-		        <macros:Table metaPath="to_Items/@com.sap.vocabularies.UI.v1.LineItem" id="items" />
-	        </Panel>                -->
+            <Panel headerText="Order items" >
+		        <macros:Table metaPath="to_Items/@com.sap.vocabularies.UI.v1.LineItem" id="items"
+                    enableExport="false" isSearchable="false" personalization="false"
+                 />
+	        </Panel>               
         </content>
-        <!-- <footer>
+        <footer>
             <OverflowToolbar>
                 <ToolbarSpacer />
-                <Button text="Create New Order" press="saveDocument" type="Emphasized"
+                <Button text="Create" press="saveDocument" type="Emphasized"
                     visible="{viewModel>/editable}" />  
                 <Button id="cancelButton" text="Cancel" press="cancelDocument" 
-                    visible="{viewModel>/editable}"/>  
+                    visible="{viewModel>/editable}"/>
             </OverflowToolbar>    
-        </footer> -->
+        </footer>
     </Page>
 </mvc:View>

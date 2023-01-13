@@ -13,18 +13,18 @@ sap.ui.define(
             },
 
             _onObjectMatched: function() {
-                const listBinding = this.getAppComponent().getModel().bindList("/Orders");
-                this.editFlow.createDocument(listBinding, {
-                    creationMode: "NewPage"
-                })
+                if(this._createDone) {
+                    this.routing.navigateToRoute('OrdersForm', {
+                        OrdersKey: 0
+                    });
+                } else {
+                    this._createDone = true;
+                    const listBinding = this.getAppComponent().getModel().bindList("/Orders");
+                    this.editFlow.createDocument(listBinding, {
+                        creationMode: "NewPage"
+                    });  
+                }
             }
-
-            // onCreate: function() {
-            //     const listBinding = this.getView().getModel().bindList("/Orders");
-            //     this.editFlow.createDocument(listBinding, {
-            //         creationMode: "NewPage",
-            //     })               
-            // },
         });
     }
 );
