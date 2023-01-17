@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@sap/ux-specification": "^1.102.14",
+    "cds-launchpad-plugin": "^1.0.8",
     "sqlite3": "^5.0.4"
   },
   "scripts": {
@@ -47,7 +48,6 @@
     }
   },
   "sapux": [
-    "app/custom-form-entry",
-    "app/custom-form-entry2"
+    "app/custom-form-entry"
   ]
 }

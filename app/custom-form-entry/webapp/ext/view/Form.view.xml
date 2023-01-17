@@ -8,7 +8,6 @@
 	        </Panel>
             <Panel headerText="Order items" >
 		        <macros:Table metaPath="to_Items/@com.sap.vocabularies.UI.v1.LineItem" id="items"
-                    enableExport="false" isSearchable="false" personalization="false"
                  />
 	        </Panel>               
         </content>

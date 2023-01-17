@@ -34,7 +34,21 @@
           "localUri": "annotations/annotation.xml"
         }
       }
-    }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "intent1": {
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "Orders",
+          "action": "create",
+          "title": "{{appTitle}}",
+          "subTitle": "{{appSubTitle}}"
+        }
+      }
+     }
   },
   "sap.ui": {
     "technology": "UI5",

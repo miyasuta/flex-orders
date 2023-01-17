@@ -14,9 +14,14 @@ sap.ui.define(
 
             _onObjectMatched: function() {
                 if(this._createDone) {
-                    this.routing.navigateToRoute('OrdersForm', {
-                        OrdersKey: 0
-                    });
+                    if (sap.ushell && sap.ushell.Container && sap.ushell.Container.getService) {
+                        var oCrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation"); 
+                        oCrossAppNav.toExternal({
+                            target: {
+                                shellHash: "#"                                
+                            }
+                        });
+                    }
                 } else {
                     this._createDone = true;
                     const listBinding = this.getAppComponent().getModel().bindList("/Orders");

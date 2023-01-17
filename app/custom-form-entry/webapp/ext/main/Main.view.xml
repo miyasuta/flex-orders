@@ -8,39 +8,4 @@
     <Page id="Main" title="Main">
         <content></content>
     </Page>
-    <!-- <f:DynamicPage id="FilterBarDefault" class="sapUiResponsiveContentPadding">
-        <f:title>
-            <f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
-                <f:heading>
-                    <Title id="_IDGenTitle1" text="Manage Orders" level="H2" />
-                </f:heading>
-            </f:DynamicPageTitle>
-        </f:title>
-        <f:header>
-            <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true">
-                <VBox id="_IDGenVBox1">
-                    <macros:FilterBar 
-                        metaPath="@com.sap.vocabularies.UI.v1.SelectionFields" 
-                        id="FilterBar" 
-                        filterChanged=".handlers.onFiltersChanged" />
-                </VBox>
-            </f:DynamicPageHeader>
-        </f:header>
-        <f:content>
-            <macros:Table 
-            id="myTable" 
-
-            readOnly="true"
-            metaPath="@com.sap.vocabularies.UI.v1.LineItem">
-                <macros:actions>
-                    <macros:Action
-                        key="customAction"
-                        text="Create"
-                        press=".onCreate"
-                        requiresSelection="false"
-                    />
-                </macros:actions>
-            </macros:Table>
-        </f:content>
-    </f:DynamicPage>  -->
 </mvc:View>
